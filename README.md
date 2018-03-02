@@ -53,3 +53,38 @@ depending on the direction the sprite moves:
 The new mark will initially be a `.`, which will again change based on any 
 movement with the pen down.
 
+## Variables
+
+Itches as a language will be loosely-typed.  Therefore, internally, variables
+will be stored singley or as arrays of `varstore`, assigned as the following:
+
+```C
+  enum vartype
+  {
+    NullType=0,
+    IntType,
+    FloatType,
+    CharType,
+    TextType,
+    BoolType
+  };
+  struct varstr
+  {
+    unsigned char *TextData;
+    unsigned long TextSize; /* How many bytes are allocated */
+    unsigned long TextLen;  /* Length of TextData in characters */
+  };
+  union vargroup
+  {
+    long IntVar;
+    double FloatVar;
+    unsigned char CharVar;
+    struct varstr TextVar;
+    short int BoolVar;
+  };
+  typedef struct varstore_struct
+  {
+    enum vartype vs_type;
+    union vargroup vs_data;
+  } varstore;
+```
