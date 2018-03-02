@@ -7,7 +7,8 @@ tab-complete can be implemented.
 
 ## Command Ideas
 
-Commands to be structured as `Category.Command`.
+Commands to be structured as `Category.Command(<Argument1> separator text <Argument2>)`.
+Separator text can be replaced with a comma (`,`).
 
 ### Categories
 
